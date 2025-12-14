@@ -1,0 +1,79 @@
+# Rime schema settings
+# encoding: utf-8
+
+schema:
+  schema_id: Flypy_Char
+  name: 小鹤单字流
+  version: "1"
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - affix_segmentor@laTeX
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - table_translator
+    # - table_translator@custom_phrase
+    # - table_translator@custom_phraseBQ  # 简字补全码表，由于不需要词组输入，默认开启
+    # - table_translator@custom_phraseCN  # 用户自用码表（文本转换），默认开启
+    - reverse_lookup_translator
+   # - history_translator@history
+    
+  filters:
+    - simplifier
+    - uniquifier
+
+translator:
+  dictionary: Flypy_Char
+
+
+# custom_phraseBQ:
+#   dictionary: ""
+#   user_dict: flypy_plus
+#   db_class: stabledb
+#   enable_sentence: false
+#   enable_completion: false
+#   initial_quality: -1 #和系统词重码时居后
+
+# custom_phraseCN:
+#   dictionary: ""
+#   user_dict: custom_phrase
+#   db_class: stabledb
+#   enable_sentence: false
+#   enable_completion: false
+#   initial_quality: -1 #和系统词重码时居后
+
+# custom_phraseFE:
+#   dictionary: ""
+#   user_dict: flypy_extra
+#   db_class: stabledb
+#   enable_sentence: false
+#   enable_completion: false
+#   initial_quality: -2 #和系统词重码时居后
+  
+# custom_phraseSC:
+#   dictionary: ""
+#   user_dict: flypy_scow
+#   db_class: stabledb
+#   enable_sentence: false
+#   enable_completion: false
+#   initial_quality: 1 #和系统词重码时居前
+
+recognizer:
+  import_preset: default
+  patterns:
+    reverse_lookup: "`[a-z]*'?$"

@@ -1,0 +1,40 @@
+name: rust
+version: "2023-10-30"
+sort: by_weight
+...
+
+# ASI	ASI
+pub	pub
+ref	ref
+to_string	tostring
+HashMap	hashmap
+HashSet	hashset
+DashMap	dashmap
+BTreeMap	btreemap
+VecDeque	vecdeque
+enum_dispatch	enumdispatch
+enum	enum
+env	env
+String::from	stringfrom
+String::from_utf8	stringfrom
+mut	mut
+mod	mod
+Refactor	refactor
+const	const
+recognizer	recognizer
+dyn	dyn
+impl	impl
+vscode	vscode
+json
+git	git
+async	async
+jetbrains	jetbrains
+await	await
+cherry-pick	cherrypick
+redis	redis
+redis-cli	rediscli
+as_mut	asmut
+as_def	asdef
+redis-server	redisserver
+tokio	tokio
+Fn	fn

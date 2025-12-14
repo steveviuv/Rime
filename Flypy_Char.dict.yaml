@@ -1,0 +1,14 @@
+# Rime dictionary
+# encoding: utf-8
+# 小鹤音形单字流
+
+
+---
+name: Flypy_Char
+version: "1"
+sort: original
+import_tables:
+  - cn_dicts/Flypy_base        # 字表
+  - cn_dicts/Flypy_plus         # 扩展单字
+...
+

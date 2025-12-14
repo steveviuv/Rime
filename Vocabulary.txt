@@ -1,0 +1,7 @@
+# Rime table
+#@/db_name	Vocabulary
+#@/db_type	tabledb
+#@/rime_version	1.13.1
+#@/tick	1
+false	false	1
+zip	zip	1

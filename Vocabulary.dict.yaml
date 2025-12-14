@@ -1,0 +1,23 @@
+# Rime dictionary
+# encoding: utf-8
+#
+#
+# https://github.com/iDvel/rime-ice
+# ------- 英文主词库 -------
+#
+#
+# 来源：
+# 常见两万词 [20k.txt](https://github.com/first20hours/google-10000-english/)
+# 合并不重复的 1000 多左右 [融合拼音方案](https://github.com/tumuyan/rime-melt) 的英文词库
+#
+# 注释掉单个字母、绝大部分两个字母的缩写、冷门缩写
+# 转化应当大写的单词
+---
+name: Vocabulary
+version: "2023-10-30"
+sort: by_weight
+import_tables:
+  - en_dicts/en_vocabulary
+  - en_dicts/rust
+  - en_dicts/term
+...

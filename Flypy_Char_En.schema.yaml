@@ -1,0 +1,196 @@
+﻿# Rime schema
+# vim: set sw=2 sts=2 et:
+# encoding: utf-8
+
+schema:
+  schema_id: Flypy_Char_En
+  name: 小鹤音形En
+  version: "0.9.1"
+  author:
+    - Patrick <ipatrickmac@gmail.com>
+    - BlindingDark <blindingdark@outlook.com>
+    - 宇止水 <Steveviuv@gmail.com>
+  description:
+    小鹤单字 + vocabulary
+  dependencies:
+    - Flypy_Char
+
+configuration:
+  split_sentence: true
+  use_wordninja_lua: true
+
+switches:
+  - name: ascii_punct
+    states: [。，, ．，]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+
+engine:
+  processors:
+    # - lua_processor@*word_append_space*processor
+    - ascii_composer
+    - key_binder
+    - speller
+    - recognizer
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+    - lua_processor@*chinese_number*processor
+  segmentors:
+    - matcher
+    - ascii_segmentor
+    - abc_segmentor
+    - affix_segmentor@Latex
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - table_translator
+    - reverse_lookup_translator
+    - lua_translator@*date
+    - lua_translator@*time
+    # /lt 触发
+    - lua_translator@*LateX
+    # 英文造词，单词以` 结尾触发
+    # - lua_translator@*en_custom_vocabulary  # 确保这个已启用
+    - table_translator@Chinese_character
+    - lua_translator@*word_autocaps*translator
+    # - table_translator@custom_en  # 用户自用码表（文本转换），默认开启
+    - punct_translator
+  filters:
+    - reverse_lookup_filter@radical_reverse_lookup
+    - lua_filter@*word_autocaps*filter
+    - lua_filter@*easy_en*enhance_filter
+    - uniquifier
+
+
+# 主词典
+translator:
+  dictionary: Vocabulary
+  enable_encoder: false
+  enable_sentence: true
+  # 用户自造词
+  enable_user_dict: false
+  # 编码补全
+  enable_completion: true
+  # 用户词典记录格式
+  # 将新词的权重调高，使其更容易出现在候选项中
+  # 匹配^.*$替换为空
+  comment_format:
+    - xform/^.*$//
+
+# 副字典
+Chinese_character:
+  # 中文输入                           
+  dictionary: Flypy_Char
+  initial_quality: 1.1
+  enable_encoder: false
+  enable_sentence: false
+  enable_user_dict: false
+  # 输入1个编码后开始提示
+  spelling_hints: 1   
+  enable_completion: true          
+  encode_commit_history: false
+  # 自定义编码提示格式
+  comment_format:
+    - xform/^(~)(.*)$/$2/
+
+custom_en:
+  dictionary: ""
+  user_dict: en_dicts/en_custom  # 指定用户词典路径
+  db_class: tabledb
+  enable_sentence: false
+  enable_completion: true  # 启用自动补全提高用户体验
+  initial_quality: 1  # 调高权重使其更容易出现在候选项中
+  enable_user_dict: true  # 确保用户词典功能开启
+
+# lua模块，确保lua脚本被正确加载
+# lua_translator@*en_custom_vocabulary:
+#   lua_translator: en_custom_vocabulary
+
+key_binder:
+  # 导入预设
+  import_preset: default
+  bindings:
+    # [上翻页
+    - {accept: bracketleft, send: Page_Up, when: has_menu}
+    # ]下翻页
+    - {accept: bracketright, send: Page_Down, when: has_menu}
+    # 引号三选
+    - { when: has_menu, accept: apostrophe, send: 3 }
+    # 分号次选
+    - {accept: semicolon, send: 2, when: has_menu}
+    # # 发送当前字+句号。
+    # - {accept: Release+period, send: period, when: composing}
+    # # 发送当前字+逗号
+    # - {accept: Release+comma, send: comma, when: composing}
+    #  tab清屏
+    - {accept: "Tab", send: Escape, when: composing}
+    # 切换中英标点， comma 为, 号
+    - {accept: "Control+comma", toggle: ascii_punct, when: always}
+    - {accept: KP_0, send: 0, when: composing}
+    - {accept: KP_1, send: 1, when: composing}
+    - {accept: KP_2, send: 2, when: composing}
+    - {accept: KP_3, send: 3, when: composing}
+    - {accept: KP_4, send: 4, when: composing}
+    - {accept: KP_5, send: 5, when: composing}
+    - {accept: KP_6, send: 6, when: composing}
+    - {accept: KP_7, send: 7, when: composing}
+    - {accept: KP_8, send: 8, when: composing}
+    - {accept: KP_9, send: 9, when: composing}
+    - {accept: KP_Decimal,  send: period,   when: composing}
+    - {accept: KP_Multiply, send: asterisk, when: composing}
+    - {accept: KP_Add,      send: plus,     when: composing}
+    - {accept: KP_Subtract, send: minus,    when: composing}
+    - {accept: KP_Divide,   send: slash,    when: composing}
+
+style:
+  horizontal: true
+  # 启用内嵌编码模式
+  inline_preedit: true  
+  # 编码显示方式
+  preedit_type: composition  
+
+
+# 标点及特殊符号表情
+punctuator:
+  import_preset: symbols
+
+
+speller:
+  # 如果不想让什么标点直接上屏, 可以加在 alphabet, 或者编辑标点符号为两个及以上的映射
+  alphabet: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA_-`*&|
+  # initials 定义仅作为始码的按键，排除 ` 让单个的 ` 可以直接上屏
+  # 添加.。是为了使用句号顶屏
+  initials: zyxwvutsrqponmlkjihgfedcbaZYXWVUTSRQPONMLKJIHGFEDCBA
+  delimiter: " `"
+  #最大码长
+  max_code_length: 0 
+  #顶字上屏
+  auto_select: true
+  # 当匹配到4个码时上屏
+  auto_select_pattern: '^\w{4}$'
+
+recognizer:
+  import_preset: default
+  patterns:
+    # 符号引导符 
+    punct: "^([A-Za-z]+)$"
+    # uppercase: '' 
+    # 大写字母开头后，可以输入[-_+.'0-9A-Za-z]这些字符，若为空， 大写后只能
+    uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
+    reverse_lookup: "`[a-z]*'?$"
+    email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"   # 自带的，email 正则
+    # 自带的，大写字母开头后，可以输入[-_+.'0-9A-Za-z]这些字符
+    # 自带的，URL 正则
+    url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
+    # LaTeX排版
+    Latex: "^(olt)(.*)$"
+
+
+# recognizer / patterns的 LaTeX 对应下面的 LaTeX 和 tag
+Latex:
+  tag: Latex
+  # prefix: "olt"
+  prefix: "olt"
+  tips: "LaTeX 公式"
