@@ -2,13 +2,11 @@
 # encoding: utf-8
 # 小鹤音形单字流
 
-
 ---
 name: Flypy_base
 version: "1"
 sort: original
 ...
-
 啊	a
 阿	aa
 腌	aao

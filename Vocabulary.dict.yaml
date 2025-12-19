@@ -18,6 +18,4 @@ version: "2023-10-30"
 sort: by_weight
 import_tables:
   - en_dicts/en_vocabulary
-  - en_dicts/rust
-  - en_dicts/term
 ...

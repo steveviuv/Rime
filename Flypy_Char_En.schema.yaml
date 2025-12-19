@@ -52,10 +52,13 @@ engine:
     # /lt 触发
     - lua_translator@*LateX
     # 英文造词，单词以` 结尾触发
-    # - lua_translator@*en_custom_vocabulary  # 确保这个已启用
+    # - lua_translator@*en_custom_vocabulary  
     - table_translator@Chinese_character
     - lua_translator@*word_autocaps*translator
-    # - table_translator@custom_en  # 用户自用码表（文本转换），默认开启
+    # 专用术语表
+    - table_translator@term_dict
+    # rust 专用
+    - table_translator@rust_dict
     - punct_translator
   filters:
     - reverse_lookup_filter@radical_reverse_lookup
@@ -69,6 +72,7 @@ translator:
   dictionary: Vocabulary
   enable_encoder: false
   enable_sentence: true
+  initial_quality: 0.9
   # 用户自造词
   enable_user_dict: false
   # 编码补全
@@ -83,26 +87,41 @@ translator:
 Chinese_character:
   # 中文输入                           
   dictionary: Flypy_Char
-  initial_quality: 1.1
   enable_encoder: false
   enable_sentence: false
   enable_user_dict: false
+  initial_quality: 1
   # 输入1个编码后开始提示
-  spelling_hints: 1   
+  spelling_hints: 1  
   enable_completion: true          
   encode_commit_history: false
   # 自定义编码提示格式
   comment_format:
     - xform/^(~)(.*)$/$2/
 
-custom_en:
+# 除rust以外的专有术语表
+term_dict:
   dictionary: ""
-  user_dict: en_dicts/en_custom  # 指定用户词典路径
+  user_dict: en_dicts/term  # 指定用户词典路径
   db_class: tabledb
   enable_sentence: false
-  enable_completion: true  # 启用自动补全提高用户体验
-  initial_quality: 1  # 调高权重使其更容易出现在候选项中
-  enable_user_dict: true  # 确保用户词典功能开启
+  enable_completion: true  # 自动补全, 存疑bug, 关闭后无法打出词典中的词
+  initial_quality: 1.1  # 调高权重使其更容易出现在候选项中
+  enable_user_dict: true  # 用户字典, 存疑bug, 关闭后无法打出词典中的词
+  comment_format:
+    - xform/^.*$//
+
+
+rust_dict:
+  dictionary: ""
+  user_dict: en_dicts/rust  # 指定用户词典路径
+  db_class: tabledb
+  enable_sentence: false
+  enable_completion: true  # 自动补全, 存疑bug, 关闭后无法打出词典中的词
+  initial_quality: 0.8  # 调高权重使其更容易出现在候选项中
+  enable_user_dict: true  # 用户字典, 存疑bug, 关闭后无法打出词典中的词
+  comment_format:
+    - xform/^.*$//
 
 # lua模块，确保lua脚本被正确加载
 # lua_translator@*en_custom_vocabulary:
