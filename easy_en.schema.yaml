@@ -15,7 +15,6 @@ schema:
 
 engine:
   processors:
-    # - lua_processor@*word_append_space*processor
     - ascii_composer
     - key_binder
     - speller
@@ -24,7 +23,7 @@ engine:
     - selector
     - navigator
     - express_editor
-    - lua_processor@*chinese_number*processor
+
   segmentors:
     - matcher
     - ascii_segmentor
@@ -35,8 +34,6 @@ engine:
   translators:
     - table_translator
     - reverse_lookup_translator
-    # 英文造词，单词以` 结尾触发
-    # - lua_translator@*en_custom_vocabulary  
     - table_translator@Chinese_character
     - lua_translator@*word_autocaps*translator
     - punct_translator
@@ -61,9 +58,3 @@ translator:
   # 匹配^.*$替换为空
   comment_format:
     - xform/^.*$//
-
-
-# lua模块，确保lua脚本被正确加载
-# lua_translator@*en_custom_vocabulary:
-#   lua_translator: en_custom_vocabulary
-

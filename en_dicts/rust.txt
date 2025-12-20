@@ -2,7 +2,7 @@
 #@/db_name	en_dicts/rust
 #@/db_type	tabledb
 #@/rime_version	1.11.2
-#@/tick	2
+#@/tick	5
 as_def	asdef	0
 as_mut	asmut	0
 async	async	0
@@ -18,7 +18,7 @@ Fn	fn	0
 HashMap	hashmap	0
 HashSet	hashset	0
 impl	impl	0
-jetbrains	jetbrains	0
+jetbrains	jetbrains	1
 mod	mod	0
 mut	mut	0
 pub	pub	1
@@ -32,5 +32,5 @@ String::from	stringfrom	0
 String::from_utf8	stringfrom	0
 tokio	tokio	0
 to_string	tostring	0
-VecDeque	vecdeque	0
-vscode	vscode	0
+VecDeque	vecdeque	1
+vscode	vscode	1
