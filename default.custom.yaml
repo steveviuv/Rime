@@ -2,11 +2,11 @@ customization:
   distribution_code_name: Weasel
   distribution_version: 0.16.3
   generator: "Rime::SwitcherSettings"
-  modified_time: "Fri Dec 19 23:29:09 2025"
+  modified_time: "Sat Dec 20 18:37:17 2025"
   rime_version: 1.11.2
 patch:
   schema_list:
-    - {schema: Flypy}
+    - {schema: flypy}
   "switcher/fold_options": false
   "switcher/hotkeys":
     - "Control+grave"

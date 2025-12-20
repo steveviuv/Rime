@@ -4,11 +4,10 @@
 
 
 ---
-name: Flypy
+name: flypy
 version: "1"
 sort: original
 import_tables:
-  - cn_dicts/Flypy_base        # 字表
-  - cn_dicts/Flypy_plus         # 扩展单字
+  - cn_dicts/flypy_base        # 字表
+  - cn_dicts/flypy_plus         # 扩展单字
 ...
-

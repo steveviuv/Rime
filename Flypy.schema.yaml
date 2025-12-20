@@ -2,11 +2,14 @@
 # encoding: utf-8
 
 schema:
-  schema_id: Flypy
+  schema_id: flypy
   name: 小鹤单字流
   version: "1"
+  author:
+    - BlindingDark <blindingdark@outlook.com>
+    - 宇止水 <Steveviuv@gmail.com>
   dependencies:
-    - easy_en
+    - english
 
 configuration:
   split_sentence: true
@@ -36,24 +39,27 @@ engine:
     - fallback_segmentor
   translators:
     - punct_translator
-    # - lua_translator@*date
-    # - lua_translator@*time
     - lua_translator@*date_translator
+    # 计算器
+    - lua_translator@*calc_translator
     # /olt 触发
-    - lua_translator@*calc_translator # 计算器
     - lua_translator@*Latex
     - lua_translator@*chinese_number*translator
-    - lua_translator@*lunar              # 农历
-    - lua_translator@*uuid               # UUID
-    - lua_translator@*number_translator  # 数字、金额大写
-    - lua_translator@*calc_translator    # 计算器
-    - lua_translator@*word_autocaps*translator        # A-Z 大写开头触发单词大写
+    # 农历
+    - lua_translator@*lunar
+    # UUID
+    - lua_translator@*uuid
+    # 数字、金额大写
+    - lua_translator@*number_translator
+    # 计算器
+    - lua_translator@*calc_translator
+    # A-Z 大写开头触发单词大写
+    - lua_translator@*word_autocaps*translator
     # 主码表
     - table_translator
     # 副码表
-    - table_translator@easy_en
+    - table_translator@english
     - reverse_lookup_translator
-   # - history_translator@history
     
   filters:
     - reverse_lookup_filter@radical_reverse_lookup
@@ -78,7 +84,7 @@ uuid: uuid
 
 translator:
   # 中文输入
-  dictionary: Flypy
+  dictionary: flypy
   enable_encoder: false
   enable_sentence: false
   enable_user_dict: false
@@ -92,8 +98,8 @@ translator:
     - xform/^(~)(.*)$/$2/
 
 ## 副词典
-easy_en:
-  dictionary: Vocabulary
+english:
+  dictionary: english
   enable_encoder: false
   enable_sentence: true
   # 用户自造词
@@ -148,7 +154,7 @@ recognizer:
     punct: "^(o[a-z]+)$"
     # 显式禁用大写模式，防止它从 default 预设中继承并拦截数字键
     uppercase: ""
-    reverse_lookup: "`[a-z]*'?$"
+    reverse_lookup: "`[a-z]*?$"
     # Latex 排版
     Latex: "^(olt)(.*)$"
     calculator: "^(oca).+$"             # 响应 lua_translator@*calc_translator，计算器。前缀设定项 calculator/prefix

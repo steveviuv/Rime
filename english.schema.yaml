@@ -3,15 +3,13 @@
 # encoding: utf-8
 
 schema:
-  schema_id: easy_en
-  name: 纯英文字典
+  schema_id: english
+  name: 纯英语字典
   version: "0.9.1"
   author:
     - Patrick <ipatrickmac@gmail.com>
-    - BlindingDark <blindingdark@outlook.com>
-    - 宇止水 <Steveviuv@gmail.com>
   description:
-    小鹤单字 + vocabulary
+    纯英文单词
 
 engine:
   processors:
@@ -28,31 +26,24 @@ engine:
     - matcher
     - ascii_segmentor
     - abc_segmentor
-    - affix_segmentor@Latex
     - punct_segmentor
     - fallback_segmentor
   translators:
     - table_translator
     - reverse_lookup_translator
-    - table_translator@Chinese_character
-    - lua_translator@*word_autocaps*translator
     - punct_translator
   filters:
-    - reverse_lookup_filter@radical_reverse_lookup
-    - lua_filter@*word_autocaps*filter
-    - lua_filter@*easy_en*enhance_filter
     - uniquifier
-
 
 # 主词典
 translator:
-  dictionary: Vocabulary
+  dictionary: english
   enable_encoder: false
   enable_sentence: true
   # 用户自造词
   enable_user_dict: false
   # 编码补全
-  enable_completion: true
+  enable_completion: false
   # 用户词典记录格式
   # 将新词的权重调高，使其更容易出现在候选项中
   # 匹配^.*$替换为空
