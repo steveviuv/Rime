@@ -111,7 +111,7 @@ sort: by_weight
 # amos 	amos
 # ams 	ams
 # amt 	amt
-# an 	an
+
 # ang 	ang
 # animalsex 	animalsex
 # ans 	ans
@@ -1786,6 +1786,7 @@ sort: by_weight
 # zur 	zur
 # zus 	zus
 # zz 	zz
+
 AA	aa
 ABC	abc
 ABS	abs
@@ -6475,6 +6476,7 @@ Zope	Zope
 Zurich	Zurich
 Zyban	Zyban
 
+a	a
 aaa	aaa
 aba	aba
 abandon	abandon
@@ -7050,6 +7052,7 @@ amsterdam	amsterdam
 amuse	amuse
 amusement	amusement
 amusing	amusing
+an 	an
 ana	ana
 anabolic	anabolic
 anaheim	anaheim
