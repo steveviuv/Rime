@@ -13,12 +13,14 @@
 # 注释掉单个字母、绝大部分两个字母的缩写、冷门缩写
 # 转化应当大写的单词
 ---
-name: english
+name: term
 version: "2023-10-30"
 sort: by_weight
 use_preset_vocabulary: false  #不使用预设词库的词频数据
-import_tables:
-  - en_dicts/en_vocabulary
-  - en_dicts/term
-  - en_dicts/rust
 ...
+
+AI	ai	1000
+LeetCode	leetcode	1000
+ShadowRocket	shadowrocket	0
+cherry-pick	cherrypick	0
+git	git	0

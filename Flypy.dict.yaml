@@ -6,7 +6,7 @@
 ---
 name: flypy
 version: "1"
-sort: original
+sort: by_weight
 use_preset_vocabulary: false  #不使用预设词库的词频数据
 import_tables:
   - cn_dicts/flypy_base        # 字表

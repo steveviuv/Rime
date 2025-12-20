@@ -1,8 +1,10 @@
-# Rime table
-#@/db_name	en_dicts/rust
-#@/db_type	tabledb
-#@/rime_version	1.11.2
-#@/tick	12
+---
+name: rust
+version: "2025-10-30"
+sort: by_weight
+use_preset_vocabulary: false  #不使用预设词库的词频数据
+...
+
 as_def	asdef	0
 as_mut	asmut	0
 async	async	0
