@@ -36,12 +36,18 @@ engine:
     - fallback_segmentor
   translators:
     - punct_translator
-    - lua_translator@*date
-    - lua_translator@*time
+    # - lua_translator@*date
+    # - lua_translator@*time
+    - lua_translator@*date_translator
     # /olt 触发
     - lua_translator@*calc_translator # 计算器
     - lua_translator@*Latex
     - lua_translator@*chinese_number*translator
+    - lua_translator@*lunar              # 农历
+    - lua_translator@*uuid               # UUID
+    - lua_translator@*number_translator  # 数字、金额大写
+    - lua_translator@*calc_translator    # 计算器
+    - lua_translator@*word_autocaps*translator        # A-Z 大写开头触发单词大写
     # 主码表
     - table_translator
     # 副码表
@@ -51,10 +57,24 @@ engine:
     
   filters:
     - reverse_lookup_filter@radical_reverse_lookup
-    - lua_filter@*word_autocaps*filter
     - lua_filter@*easy_en*enhance_filter
-    # - lua_filter@*cn_en_spacer
+    - lua_filter@*word_autocaps*filter
     - uniquifier
+
+# Lua 配置: 日期、时间、星期、ISO 8601、时间戳的触发关键字
+date_translator:
+  date: date            # 日期： 2022-11-29
+  time: time            # 时间： 18:13
+  week: week            # 星期： 星期二
+  datetime: datetime    # ISO 8601： 2022-11-29T18:13:11+08:00
+  timestamp: timestamp  # 时间戳： 1669716794
+
+# Lua 配置：农历的触发关键字
+lunar: nl  # 农历： 二〇二三年冬月二十 癸卯年（兔）冬月二十
+
+
+# Lua 配置: 生成 UUID 的触发关键字
+uuid: uuid
 
 translator:
   # 中文输入
@@ -90,41 +110,6 @@ switches:
   - name: full_shape
     states: [ 半角, 全角 ]
 
-key_binder:
-  # 导入预设
-  import_preset: default
-  bindings:
-    # [上翻页
-    - {accept: bracketleft, send: Page_Up, when: has_menu}
-    # ]下翻页
-    - {accept: bracketright, send: Page_Down, when: has_menu}
-    # 引号三选
-    - { when: has_menu, accept: apostrophe, send: 3 }
-    # 分号次选
-    - {accept: semicolon, send: 2, when: has_menu}
-    # # 发送当前字+句号。
-    # - {accept: Release+period, send: period, when: composing}
-    # # 发送当前字+逗号
-    # - {accept: Release+comma, send: comma, when: composing}
-    #  tab清屏
-    - {accept: "Tab", send: Escape, when: composing}
-    # 切换中英标点， comma 为, 号
-    - {accept: "Control+comma", toggle: ascii_punct, when: always}
-    - {accept: KP_0, send: 0, when: composing}
-    - {accept: KP_1, send: 1, when: composing}
-    - {accept: KP_2, send: 2, when: composing}
-    - {accept: KP_3, send: 3, when: composing}
-    - {accept: KP_4, send: 4, when: composing}
-    - {accept: KP_5, send: 5, when: composing}
-    - {accept: KP_6, send: 6, when: composing}
-    - {accept: KP_7, send: 7, when: composing}
-    - {accept: KP_8, send: 8, when: composing}
-    - {accept: KP_9, send: 9, when: composing}
-    - {accept: KP_Decimal,  send: period,   when: composing}
-    - {accept: KP_Multiply, send: asterisk, when: composing}
-    - {accept: KP_Add,      send: plus,     when: composing}
-    - {accept: KP_Subtract, send: minus,    when: composing}
-    - {accept: KP_Divide,   send: slash,    when: composing}
 
 style:
   horizontal: true
@@ -161,14 +146,13 @@ recognizer:
   patterns:
     # 符号引导符 
     punct: "^(o[a-z]+)$"
-    # 大写字母开头后，可以输入[-_+.'0-9A-Za-z]这些字符，若为空， 大写后只能
-    uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"
+    # 显式禁用大写模式，防止它从 default 预设中继承并拦截数字键
+    uppercase: ""
     reverse_lookup: "`[a-z]*'?$"
     # Latex 排版
     Latex: "^(olt)(.*)$"
     calculator: "^(oca).+$"             # 响应 lua_translator@*calc_translator，计算器。前缀设定项 calculator/prefix
     radical_lookup: "^uU[a-z]+$"        # 响应部件拆字的反查，触发前缀与 radical_lookup/prefix 匹配
-    unicode: "^U[a-f0-9]+"              # 脚本将自动获取第 2 个字符 U 作为触发前缀，响应 lua_translator@*unicode，输出 Unicode 字符
     number: "^R[0-9]+[.]?[0-9]*"        # 脚本将自动获取第 2 个字符 R 作为触发前缀，响应 lua_translator@*number_translator，数字金额大写
     gregorian_to_lunar: "^N[0-9]{1,8}"  # 脚本将自动获取第 2 个字符 N 作为触发前缀，响应 lua_translator@*lunar，公历转农历，输入 N20240115 得到「二〇二三年腊月初五」
 
@@ -176,34 +160,38 @@ calculator:
   prefix: "oca"
   show_prefix: true
 
-# custom_phraseBQ:
-#   dictionary: ""
-#   user_dict: flypy_plus
-#   db_class: stabledb
-#   enable_sentence: false
-#   enable_completion: false
-#   initial_quality: -1 #和系统词重码时居后
-
-# custom_phraseCN:
-#   dictionary: ""
-#   user_dict: custom_phrase
-#   db_class: stabledb
-#   enable_sentence: false
-#   enable_completion: false
-#   initial_quality: -1 #和系统词重码时居后
-
-# custom_phraseFE:
-#   dictionary: ""
-#   user_dict: flypy_extra
-#   db_class: stabledb
-#   enable_sentence: false
-#   enable_completion: false
-#   initial_quality: -2 #和系统词重码时居后
-  
-# custom_phraseSC:
-#   dictionary: ""
-#   user_dict: flypy_scow
-#   db_class: stabledb
-#   enable_sentence: false
-#   enable_completion: false
-#   initial_quality: 1 #和系统词重码时居前
+key_binder:
+  # 导入预设
+  import_preset: default
+  bindings:
+    # [上翻页
+    - {accept: bracketleft, send: Page_Up, when: has_menu}
+    # ]下翻页
+    - {accept: bracketright, send: Page_Down, when: has_menu}
+    # 引号三选
+    - { when: has_menu, accept: apostrophe, send: 3 }
+    # 分号次选
+    - {accept: semicolon, send: 2, when: has_menu}
+    # # 发送当前字+句号。
+    # - {accept: Release+period, send: period, when: composing}
+    # # 发送当前字+逗号
+    # - {accept: Release+comma, send: comma, when: composing}
+    #  tab清屏
+    - {accept: "Tab", send: Escape, when: composing}
+    # 切换中英标点， comma 为, 号
+    - {accept: "Control+comma", toggle: ascii_punct, when: always}
+    - {accept: KP_0, send: 0, when: composing}
+    - {accept: KP_1, send: 1, when: composing}
+    - {accept: KP_2, send: 2, when: composing}
+    - {accept: KP_3, send: 3, when: composing}
+    - {accept: KP_4, send: 4, when: composing}
+    - {accept: KP_5, send: 5, when: composing}
+    - {accept: KP_6, send: 6, when: composing}
+    - {accept: KP_7, send: 7, when: composing}
+    - {accept: KP_8, send: 8, when: composing}
+    - {accept: KP_9, send: 9, when: composing}
+    - {accept: KP_Decimal,  send: period,   when: composing}
+    - {accept: KP_Multiply, send: asterisk, when: composing}
+    - {accept: KP_Add,      send: plus,     when: composing}
+    - {accept: KP_Subtract, send: minus,    when: composing}
+    - {accept: KP_Divide,   send: slash,    when: composing}
