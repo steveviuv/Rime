@@ -1,26 +1,12 @@
-# Rime dictionary
-# encoding: utf-8
-#
-#
-# https://github.com/iDvel/rime-ice
-# ------- 英文主词库 -------
-#
-#
-# 来源：
-# 常见两万词 [20k.txt](https://github.com/first20hours/google-10000-english/)
-# 合并不重复的 1000 多左右 [融合拼音方案](https://github.com/tumuyan/rime-melt) 的英文词库
-#
-# 注释掉单个字母、绝大部分两个字母的缩写、冷门缩写
-# 转化应当大写的单词
 ---
 name: term
-version: "2023-10-30"
+version: "2025-12-20"
 sort: by_weight
 use_preset_vocabulary: false  #不使用预设词库的词频数据
 ...
 
-AI	ai	1000
-LeetCode	leetcode	1000
+AI	ai	0
+LeetCode	leetcode	0
 ShadowRocket	shadowrocket	0
 cherry-pick	cherrypick	0
 git	git	0

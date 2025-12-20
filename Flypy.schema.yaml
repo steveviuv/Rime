@@ -120,6 +120,7 @@ english:
   dictionary: english
   enable_encoder: false
   enable_sentence: true
+  initial_quality: 1
   # 用户自造词
   enable_user_dict: false
   # 编码补全
@@ -128,29 +129,6 @@ english:
   comment_format:
     - xform/^.*$//
 
-# # 除rust以外的专有术语表
-# term_dict:
-#   dictionary: ""
-#   user_dict: en_dicts/term  # 指定用户词典路径
-#   db_class: stabledb        # 只读数据库，无法动态调频；设为 tabledb 可以动态调频
-#   enable_sentence: true
-#   enable_completion: true  # 自动补全, 存疑bug, 关闭后无法打出词典中的词
-#   initial_quality: 2  # 调高权重使其更容易出现在候选项中
-#   enable_user_dict: true  # 用户字典, 存疑bug, 关闭后无法打出词典中的词
-#   comment_format:
-#     - xform/^.*$//
-
-
-# rust_dict:
-#   dictionary: ""
-#   user_dict: en_dicts/rust  # 指定用户词典路径
-#   db_class: stabledb
-#   enable_sentence: true
-#   enable_completion: true  # 自动补全, 存疑bug, 关闭后无法打出词典中的词
-#   initial_quality: 1.1  # 调高权重使其更容易出现在候选项中
-#   enable_user_dict: true  # 用户字典, 存疑bug, 关闭后无法打出词典中的词
-#   comment_format:
-#     - xform/^.*$//
 
 
 reverse_lookup:
