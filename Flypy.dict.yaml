@@ -7,6 +7,7 @@
 name: flypy
 version: "1"
 sort: original
+use_preset_vocabulary: false  #不使用预设词库的词频数据
 import_tables:
   - cn_dicts/flypy_base        # 字表
   - cn_dicts/flypy_plus         # 扩展单字

@@ -2,35 +2,35 @@
 #@/db_name	en_dicts/rust
 #@/db_type	tabledb
 #@/rime_version	1.11.2
-#@/tick	5
-as_def	asdef	0
-as_mut	asmut	0
-async	async	0
-await	await	0
-BTreeMap	btreemap	0
-const	const	0
-DashMap	dashmap	0
-dyn	dyn	0
-enum	enum	0
-enum_dispatch	enumdispatch	0
-env	env	0
-Fn	fn	0
-HashMap	hashmap	0
-HashSet	hashset	0
-impl	impl	0
-jetbrains	jetbrains	1
-mod	mod	0
-mut	mut	0
-pub	pub	1
-recognizer	recognizer	0
-redis	redis	0
-redis-cli	rediscli	0
-redis-server	redisserver	0
-ref	ref	0
-Refactor	refactor	0
-String::from	stringfrom	0
-String::from_utf8	stringfrom	0
-tokio	tokio	0
-to_string	tostring	0
-VecDeque	vecdeque	1
-vscode	vscode	1
+#@/tick	6
+as_def	asdef
+as_mut	asmut
+async	async
+await	await
+BTreeMap	btreemap
+const	const
+DashMap	dashmap
+dyn	dyn
+enum	enum
+enum_dispatch	enumdispatch
+env	env
+Fn	fn
+HashMap	hashmap
+HashSet	hashset
+impl	impl
+jetbrains	jetbrains
+mod	mod
+mut	mut
+pub	pub
+recognizer	recognizer
+redis	redis
+redis-cli	rediscli
+redis-server	redisserver
+ref	ref
+Refactor	refactor
+String::from	stringfrom
+String::from_utf8	stringfrom
+tokio	tokio
+to_string	tostring
+VecDeque	vecdeque
+vscode	vscode

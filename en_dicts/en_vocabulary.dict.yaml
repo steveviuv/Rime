@@ -16,6 +16,7 @@
 name: en_vocabulary
 version: "2023-10-30"
 sort: by_weight
+use_preset_vocabulary: false  #不使用预设词库的词频数据
 ...
 
 # ASI 	ASI

@@ -3,8 +3,8 @@
 #@/db_type	tabledb
 #@/rime_version	1.11.2
 #@/tick	1
-AI	ai	1
-LeetCode	leetcode	0
-ShadowRocket	shadowrocket	0
-cherry-pick	cherrypick	0
-git	git	0
+AI	ai
+LeetCode	leetcode
+ShadowRocket	shadowrocket
+cherry-pick	cherrypick
+git	git

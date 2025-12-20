@@ -16,9 +16,10 @@
 # 如无候选2则表示没有生效
 # no comment
 ---
-name: Flypy_plus
+name: flypy_plus
 version: "1"
 sort: original
+use_preset_vocabulary: false  #不使用预设词库的词频数据
 ...
 
 畖	watg

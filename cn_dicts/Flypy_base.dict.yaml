@@ -3,9 +3,10 @@
 # 小鹤音形单字流
 
 ---
-name: Flypy_base
+name: flypy_base
 version: "1"
 sort: original
+use_preset_vocabulary: false  #不使用预设词库的词频数据
 ...
 啊	a
 阿	aa
