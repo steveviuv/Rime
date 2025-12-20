@@ -73,11 +73,11 @@ engine:
     - lua_translator@*calc_translator
     # A-Z 大写开头触发单词大写
     - lua_translator@*word_autocaps*translator
+    - table_translator@term_dict
     # 主码表
     - table_translator
     # 副码表
     - table_translator@english
-    - table_translator@term_dict
     - table_translator@rust_dict
     - reverse_lookup_translator
     
@@ -107,7 +107,7 @@ translator:
   enable_encoder: false
   enable_sentence: false
   enable_user_dict: false
-  initial_quality: 0.2
+  initial_quality: 1
   # 输入1个编码后开始提示
   spelling_hints: 1
   enable_completion: true
@@ -145,7 +145,7 @@ term_dict:
 rust_dict:
   dictionary: ""
   user_dict: en_dicts/rust  # 指定用户词典路径
-  db_class: tabledb
+  db_class: stabledb
   enable_sentence: true
   enable_completion: true  # 自动补全, 存疑bug, 关闭后无法打出词典中的词
   initial_quality: 1.1  # 调高权重使其更容易出现在候选项中
