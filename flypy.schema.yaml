@@ -81,7 +81,7 @@ engine:
     
   filters:
     - reverse_lookup_filter@radical_reverse_lookup
-    - lua_filter@*easy_en*enhance_filter
+    - lua_filter@*melt_en*enhance_filter
     - lua_filter@*word_autocaps*filter
     - lua_filter@*en_spacer
     - uniquifier
