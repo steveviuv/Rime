@@ -15,7 +15,7 @@ local function init(env)
       wordninja_split = _pass_func
       return
    end
--- configuration 对应 hesingle_en 里的 configuration 主键
+-- configuration 对应 flypy 里的 configuration 主键
    local use_wordninja_rs_lua_module = env.engine.schema.config:get_bool('configuration/use_wordninja_rs_lua_module')
    local use_wordninja_rs = env.engine.schema.config:get_bool('configuration/use_wordninja_rs')
    local use_wordninja_py = env.engine.schema.config:get_bool('configuration/use_wordninja_py')
