@@ -7,4 +7,5 @@ import_tables:
   - en_dicts/en_vocabulary
   - en_dicts/term
   - en_dicts/rust
+  - en_dicts/en_ext
 ...
