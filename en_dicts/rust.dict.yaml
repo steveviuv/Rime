@@ -9,7 +9,9 @@ as_def	asdef	0
 as_mut	asmut	0
 async	async	0
 await	await	0
+Btree	btree	0
 BTreeMap	btreemap	0
+BPlusTree	bplustree	0
 const	const	0
 DashMap	dashmap	4
 dyn	dyn	0
@@ -36,3 +38,4 @@ tokio	tokio	0
 to_string	tostring	0
 VecDeque	vecdeque	0
 vscode	vscode	0
+JsonWebToken	jsonwebtoken	0

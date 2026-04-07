@@ -24,12 +24,7 @@ use_preset_vocabulary: false  #不使用预设词库的词频数据
 # +_+
 a	a
 AA	aa
-aaa	aaa
-# aac	aac
-Aaliyah	aaliyah
 Aaron	aaron
-# ab	ab
-# aba	aba
 abalone	abalone
 abandon	abandon
 abandoned	abandoned
@@ -762,7 +757,7 @@ amuse	amuse
 amusement	amusement
 amusing	amusing
 Amy	amy
-# an	an
+an	an
 ana	ana
 anabolic	anabolic
 Anaheim	anaheim
@@ -5440,6 +5435,8 @@ description	description
 descriptions	descriptions
 descriptive	descriptive
 descriptor	descriptor
+deserialize	deserialize
+deserialized	deserialized
 desert	desert
 deserve	deserve
 deserved	deserved
@@ -7702,6 +7699,7 @@ flares	flares
 flaring	flaring
 flash	flash
 flashback	flashback
+FlashCard	flashcard
 flashed	flashed
 flasher	flasher
 flashes	flashes
@@ -8860,10 +8858,6 @@ gyms	gyms
 gynoecium	gynoecium
 gypsy	gypsy
 Gypsy	gypsy
-# gz	gz
-# h	h
-# ha	ha
-# haas	haas
 habit	habit
 habitat	habitat
 habitats	habitats
@@ -8883,7 +8877,6 @@ hafnium	hafnium
 Hague	hague
 haha	haha
 Hahn	hahn
-# hai	hai
 hail	hail
 hair	hair
 haired	haired
@@ -9653,11 +9646,8 @@ hypothesis	hypothesis
 hypothetical	hypothetical
 hysterical	hysterical
 hyundai	hyundai
-# hz	hz
-# i	i
-# ia	ia
-Ian	ian
-# ib	ib
+Hz	hz
+I	i
 # ibid	ibid
 # ibis	ibis
 Ibiza	ibiza
@@ -17786,6 +17776,8 @@ serenity	serenity
 sergeant	sergeant
 # sergio	sergio
 serial	serial
+serialize	serialize
+serialized	serialized
 serials	serials
 # Serie	Serie
 series	series

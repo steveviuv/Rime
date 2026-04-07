@@ -35,3 +35,9 @@ tokio
 tostring
 vecdeque
 vscode
+deserialize
+deserialized
+serialized
+serialize
+supermemo
+flashcard

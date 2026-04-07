@@ -5,3 +5,7 @@ uv.lock
 .vscode/tasks.json
 python_tools/lowercase_rime_dict.py
 python_tools/main.py
+user.yaml
+.gitignore
+weasel.custom.yaml
+
