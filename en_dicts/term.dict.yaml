@@ -11,3 +11,5 @@ ShadowRocket	shadowrocket	0
 cherry-pick	cherrypick	0
 git	git	0
 SkipList	skiplist	0
+Git WorkTree	gitworktree	0
+Git Rebase	gitrebase	0

@@ -41,3 +41,7 @@ serialized
 serialize
 supermemo
 flashcard
+seaorm
+utoipa	0
+gitworktree	0
+gitrebase	0

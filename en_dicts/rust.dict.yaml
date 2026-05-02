@@ -39,3 +39,5 @@ to_string	tostring	0
 VecDeque	vecdeque	0
 vscode	vscode	0
 JsonWebToken	jsonwebtoken	0
+seaorm	seaorm	0
+utoipa	utoipa	0
