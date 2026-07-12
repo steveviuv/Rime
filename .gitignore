@@ -9,3 +9,5 @@ user.yaml
 .gitignore
 weasel.custom.yaml
 
+/luna_pinyin.userdb
+/.idea
